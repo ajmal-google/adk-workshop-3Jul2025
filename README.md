@@ -2,6 +2,33 @@
 
 Welcome to the ADK (Agent Development Kit) workshop! This guide will help you set up your development environment and create a basketball agent application.
 
+
+## Veo 3 Prompting Tips: 
+
+**Composition**: How the shot is framed (wide shot, close-up, low angle)
+**Camera Motion**: What the camera is doing (tracking shot, POV)
+**Subject** Description: Clearly identify characters, objects, or elements  (a woman in her 20s with blond hair)
+**Action**: Describe the movements or events occurring (singing, running, discussing)
+**Location**: Specify the environment or setting
+**Style**: Overall aesthetic (3D animation, Film Noir etc)
+**Dialogue**: Provide character speech in transcript format (using quotation marks).
+**Implicit or Explicit Audio Cues**: Hints about desired sound elements can be beneficial.
+
+### Example Basketball Scene:
+
+```bash
+Create a video with the following characteristics: 
+
+**Composition:** Wide shot capturing the full court, then dramatic close-up on the player's determined face
+**Camera Motion:** Dynamic tracking shot following the ball, then slow-motion POV from the player's perspective during the final shot
+**Subject Description:** A tall African-American basketball player in his early 20s with muscular build, wearing a red #23 jersey, sweat glistening on his face
+**Action:** Player dribbles down the court with lightning speed, performs a crossover move to evade defenders, then leaps for a spectacular slam dunk
+**Location:** Professional basketball arena with bright LED lighting, packed crowd in the background, wooden court with gleaming finish
+**Style:** Cinematic sports photography with dramatic lighting, slow-motion effects during key moments, vibrant colors
+**Dialogue:** "This is it! Time to show them what we're made of!" (player's internal monologue)
+**Audio Cues:** Crowd cheering building to a crescendo, sneakers squeaking on the court, the satisfying swish of the net, dramatic orchestral music building tension
+```
+
 ## Prerequisites
 
 - Python 3.8 or higher
