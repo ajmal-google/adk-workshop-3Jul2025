@@ -1,0 +1,86 @@
+sources:
+  my-bigquery-source:
+    kind: bigquery
+    project: YOUR_PROJECT
+    location: us
+
+tools:
+  search-games-by-team:
+    kind: bigquery-sql
+    source: my-bigquery-source
+    description: Search for basketball games involving a specific home or away team.
+    parameters:
+      - name: team_name
+        type: string
+        description: The name of the team to search for (e.g., "Lakers", "Celtics").
+    statement: |-
+      SELECT *
+      FROM `YOUR_PROJECT.basketball_data.basketball_games`
+      WHERE LOWER(Home_Team) LIKE LOWER(CONCAT('%', @team_name, '%'))
+         OR LOWER(Away_Team) LIKE LOWER(CONCAT('%', @team_name, '%'));
+
+  search-games-by-mvp:
+    kind: bigquery-sql
+    source: my-bigquery-source
+    description: Search for basketball games where a specific player was the MVP.
+    parameters:
+      - name: mvp_name
+        type: string
+        description: The name of the MVP to search for (e.g., "LeBron James").
+    statement: |-
+      SELECT *
+      FROM `YOUR_PROJECT.basketball_data.basketball_games`
+      WHERE LOWER(MVP) LIKE LOWER(CONCAT('%', @mvp_name, '%'));
+
+  get-game-details:
+    kind: bigquery-sql
+    source: my-bigquery-source
+    description: Retrieve all details for a specific basketball game by its Game ID.
+    parameters:
+      - name: game_id
+        type: string
+        description: The unique ID of the game (e.g., "BSK-001").
+    statement: |-
+      SELECT *
+      FROM `YOUR_PROJECT.basketball_data.basketball_games`
+      WHERE Game_ID = @game_id;
+
+  search-games-by-date-range:
+    kind: bigquery-sql
+    source: my-bigquery-source
+    description: Search for basketball games played within a specified date range.
+    parameters:
+      - name: start_date
+        type: string
+        description: The start date of the range in 'YYYY-MM-DD' format.
+      - name: end_date
+        type: string
+        description: The end date of the range in 'YYYY-MM-DD' format.
+    statement: |-
+      SELECT *
+      FROM `YOUR_PROJECT.basketball_data.basketball_games`
+      WHERE Date BETWEEN PARSE_DATE('%Y-%m-%d', @start_date) AND PARSE_DATE('%Y-%m-%d', @end_date);
+
+  update-game-mvp:
+    kind: bigquery-sql
+    source: my-bigquery-source
+    description: Update the MVP for a specific basketball game by its Game ID.
+    parameters:
+      - name: game_id
+        type: string
+        description: The ID of the game to update (e.g., "BSK-010").
+      - name: new_mvp_name
+        type: string
+        description: The new MVP name to set for the game.
+    statement: |-
+      UPDATE `YOUR_PROJECT.basketball_data.basketball_games`
+      SET MVP = @new_mvp_name
+      WHERE Game_ID = @game_id;
+
+toolsets:
+  basketball-toolset:
+    - search-games-by-team
+    - search-games-by-mvp
+    - get-game-details
+    - search-games-by-date-range
+    - update-game-mvp
