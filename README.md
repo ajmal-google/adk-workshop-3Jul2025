@@ -56,7 +56,7 @@ adk create basketball-agent-app
 ### 7. Download Toolbox
 
 ```bash
-# Replace $VERSION with the appropriate version number
+export VERSION=0.6.0
 curl -O https://storage.googleapis.com/genai-toolbox/v$VERSION/linux/amd64/toolbox
 chmod +x toolbox
 ```
@@ -71,11 +71,13 @@ Create a `tools.yaml` file in your project directory with the required configura
 ./toolbox --tools-file "tools.yaml"
 ```
 
+Append `/api/toolset` to the end URL to check the tools available.
+
 
 ### 10. Let's create our agent scaffolding
 
 ```bash
-
+adk create basketball-agents
 ```
 
 Paste the following into the `agent.py`
