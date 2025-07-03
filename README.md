@@ -16,30 +16,23 @@ Welcome to the ADK (Agent Development Kit) workshop! This guide will help you se
 python -m venv .venv
 ```
 
-### 2. Install Google ADK
-
-```bash
-sudo python3 -m pip install google-adk==1.2.1
-```
-
-### 3. Activate Virtual Environment
+### 2. Activate Virtual Environment
 
 ```bash
 source .venv/bin/activate
 ```
 
-### 4. Download and Extract Project Files
+### 3. Install Google ADK
 
 ```bash
-# Replace YOUR_GCP_PROJECT_ID with your actual project ID
-gcloud storage cp gs://YOUR_GCP_PROJECT_ID-bucket/adk_project.zip ./adk_project.zip
-unzip adk_project.zip
+sudo python3 -m pip install google-adk==1.2.1
 ```
 
-### 5. Install Dependencies
+### 4. Install Dependencies
 
 ```bash
-sudo python3 -m pip install -r adk_project/requirements.txt
+cd adk-workshop-3Jul2025
+sudo python3 -m pip install -r requirements.txt
 pip install google-adk toolbox-core
 ```
 
