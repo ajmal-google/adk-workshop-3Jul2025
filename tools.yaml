@@ -77,6 +77,20 @@ tools:
       SET MVP = @new_mvp_name
       WHERE Game_ID = @game_id;
 
+  # rank-players-by-mvp-count:
+  #   kind: bigquery-sql
+  #   source: my-bigquery-source
+  #   description: Rank players by the total number of times they have been MVP, showing the most frequent MVPs first.
+  #   parameters: []
+  #   statement: |-
+  #     SELECT 
+  #       MVP,
+  #       COUNT(*) as mvp_count
+  #     FROM `YOUR_PROJECT.basketball_data.basketball_games`
+  #     WHERE MVP IS NOT NULL
+  #     GROUP BY MVP
+  #     ORDER BY mvp_count DESC, MVP ASC;
+
 toolsets:
   basketball-toolset:
     - search-games-by-team
@@ -84,3 +98,4 @@ toolsets:
     - get-game-details
     - search-games-by-date-range
     - update-game-mvp
+    # - rank-players-by-mvp-count

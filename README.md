@@ -71,6 +71,37 @@ Create a `tools.yaml` file in your project directory with the required configura
 ./toolbox --tools-file "tools.yaml"
 ```
 
+
+### 10. Let's create our agent scaffolding
+
+```bash
+
+```
+
+Paste the following into the `agent.py`
+
+```python
+from google.adk.agents import Agent
+from toolbox_core import ToolboxSyncClient
+
+toolbox = ToolboxSyncClient("http://127.0.0.1:5000")
+
+# Load all the tools
+tools = toolbox.load_toolset('basketball-toolset')
+
+root_agent = Agent(
+    name="basketball_agent",
+    model="gemini-2.0-flash",
+    description=(
+        "Agent to answer questions about basketball games."
+    ),
+    instruction=(
+        "You are a helpful agent who can answer user questions about basketball games."
+    ),
+    tools=tools,
+)
+```
+
 ## Quick Reference
 
 | Step | Command | Description |
